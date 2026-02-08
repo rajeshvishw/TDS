@@ -1,0 +1,87 @@
+{
+ "charts": [],
+ "content": "[{\"id\":\"-IS7B-o9ZC\",\"type\":\"card\",\"data\":{\"card_name\":\"Transaction\",\"col\":3}},{\"id\":\"mGwgE83vQ2\",\"type\":\"card\",\"data\":{\"card_name\":\"Master\",\"col\":3}}]",
+ "creation": "2026-02-08 12:30:33.785741",
+ "custom_blocks": [],
+ "docstatus": 0,
+ "doctype": "Workspace",
+ "for_user": "",
+ "hide_custom": 0,
+ "idx": 0,
+ "indicator_color": "green",
+ "is_hidden": 0,
+ "label": "Taxes & Forms",
+ "links": [
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Transaction",
+   "link_count": 1,
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "TDS Liability",
+   "link_count": 0,
+   "link_to": "TDS Liability",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Master",
+   "link_count": 3,
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Section",
+   "link_count": 0,
+   "link_to": "Section",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Transaction Period",
+   "link_count": 0,
+   "link_to": "Transaction Period",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Nature Of Transaction",
+   "link_count": 0,
+   "link_to": "Nature Of Transaction",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  }
+ ],
+ "modified": "2026-02-08 12:38:09.205350",
+ "modified_by": "Administrator",
+ "module": "TDS",
+ "name": "Taxes & Forms",
+ "number_cards": [],
+ "owner": "Administrator",
+ "parent_page": "",
+ "public": 1,
+ "quick_lists": [],
+ "roles": [],
+ "sequence_id": 28.0,
+ "shortcuts": [],
+ "title": "Taxes & Forms"
+}
