@@ -1,0 +1,30 @@
+{
+ "add_total_row": 0,
+ "add_translate_data": 0,
+ "columns": [],
+ "creation": "2026-02-08 13:11:56.237103",
+ "disabled": 0,
+ "docstatus": 0,
+ "doctype": "Report",
+ "filters": [],
+ "idx": 0,
+ "is_standard": "Yes",
+ "javascript": "frappe.query_reports[\"Form 16\"] = {\n    \"filters\": [\n        {\n            \"fieldname\": \"view_type\",\n            \"label\": __(\"View Type\"),\n            \"fieldtype\": \"Select\",\n            \"options\": [\"Monthly\", \"Quarterly\"],\n            \"default\": \"Monthly\",\n            \"reqd\": 1,\n            \"on_change\": function() {\n                frappe.query_report.refresh();\n            }\n        },\n        {\n            \"fieldname\": \"company\",\n            \"label\": __(\"Company\"),\n            \"fieldtype\": \"Link\",\n            \"options\": \"Company\",\n            \"reqd\": 1,\n            \"default\": frappe.defaults.get_user_default(\"Company\")\n        },\n        {\n            \"fieldname\": \"year\",\n            \"label\": __(\"Year\"),\n            \"fieldtype\": \"Int\",\n            \"default\": new Date().getFullYear(),\n            \"depends_on\": \"eval:doc.view_type=='Monthly'\",\n            \"mandatory_depends_on\": \"eval:doc.view_type=='Monthly'\"\n        },\n        {\n            \"fieldname\": \"month\",\n            \"label\": __(\"Month\"),\n            \"fieldtype\": \"Select\",\n            \"options\": [\n                \"January\", \"February\", \"March\", \"April\", \"May\", \"June\",\n                \"July\", \"August\", \"September\", \"October\", \"November\", \"December\"\n            ],\n            \"default\": [\"January\", \"February\", \"March\", \"April\", \"May\", \"June\",\n                \"July\", \"August\", \"September\", \"October\", \"November\", \"December\"][new Date().getMonth()],\n            \"depends_on\": \"eval:doc.view_type=='Monthly'\",\n            \"mandatory_depends_on\": \"eval:doc.view_type=='Monthly'\"\n        },\n        {\n            \"fieldname\": \"financial_year\",\n            \"label\": __(\"Financial Year\"),\n            \"fieldtype\": \"Link\",\n            \"options\": \"Fiscal Year\",\n            \"depends_on\": \"eval:doc.view_type=='Quarterly'\",\n            \"mandatory_depends_on\": \"eval:doc.view_type=='Quarterly'\"\n        },\n        {\n            \"fieldname\": \"quarter\",\n            \"label\": __(\"Quarter\"),\n            \"fieldtype\": \"Select\",\n            \"options\": [\n                \"Q1 (Apr-Jun)\",\n                \"Q2 (Jul-Sep)\",\n                \"Q3 (Oct-Dec)\",\n                \"Q4 (Jan-Mar)\"\n            ],\n            \"depends_on\": \"eval:doc.view_type=='Quarterly'\",\n            \"mandatory_depends_on\": \"eval:doc.view_type=='Quarterly'\"\n        }\n    ]\n};",
+ "letterhead": null,
+ "modified": "2026-02-08 23:38:48.482812",
+ "modified_by": "Administrator",
+ "module": "TDS",
+ "name": "Form 16",
+ "owner": "Administrator",
+ "prepared_report": 0,
+ "ref_doctype": "TDS Liability",
+ "report_name": "Form 16",
+ "report_script": "def execute(filters=None):\n    columns = get_columns()\n    data = get_data(filters)\n    return columns, data\n\ndef get_columns():\n    return [\n        {\n            \"fieldname\": \"employee\",\n            \"label\": \"Employee\",\n            \"fieldtype\": \"Link\",\n            \"options\": \"Employee\",\n            \"width\": 150\n        },\n        {\n            \"fieldname\": \"pan_no\",\n            \"label\": \"PAN No\",\n            \"fieldtype\": \"Data\",\n            \"width\": 120\n        },\n        {\n            \"fieldname\": \"date_of_tax_deducted\",\n            \"label\": \"Date of Tax Deduction\",\n            \"fieldtype\": \"Date\",\n            \"width\": 120\n        },\n        {\n            \"fieldname\": \"tds_amount\",\n            \"label\": \"TDS Amount\",\n            \"fieldtype\": \"Currency\",\n            \"width\": 120\n        }\n    ]\n\ndef get_data(filters):\n    company = filters.get(\"company\")\n    year = filters.get(\"year\")\n    frappe.throw(company,\"llllllll\")\n    month_name = filters.get(\"month\")\n    view_type = filters.get(\"view_type\")\n    \n    if view_type == \"Monthly\":\n        if not company or not year or not month_name:\n            frappe.msgprint(\"Please select Company, Year and Month\")\n            return []\n        \n        month_map = {\n            \"January\": 1, \"February\": 2, \"March\": 3, \"April\": 4,\n            \"May\": 5, \"June\": 6, \"July\": 7, \"August\": 8,\n            \"September\": 9, \"October\": 10, \"November\": 11, \"December\": 12\n        }\n        month_no = month_map.get(month_name)\n        \n        return frappe.db.sql(\"\"\"\n            SELECT\n                tl.employee,\n                tl.pan_no,\n                tl.date_of_tax_deducted,\n                SUM(tl.tds_amount) AS tds_amount\n            FROM `tabTDS Liability` tl\n            WHERE\n                tl.company = %s\n                AND YEAR(tl.date_of_tax_deducted) = %s\n                AND MONTH(tl.date_of_tax_deducted) = %s\n            GROUP BY tl.employee, tl.pan_no, tl.date_of_tax_deducted\n            ORDER BY tl.employee, tl.date_of_tax_deducted\n        \"\"\", (company, year, month_no), as_dict=1)\n    \n    # Add quarterly logic here if needed\n    return []",
+ "report_type": "Script Report",
+ "roles": [
+  {
+   "role": "System Manager"
+  }
+ ],
+ "timeout": 0
+}

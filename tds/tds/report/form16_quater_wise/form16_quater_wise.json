@@ -11,7 +11,7 @@
  "is_standard": "Yes",
  "javascript": "frappe.query_reports[\"Form16 Quater Wise\"] = {\n    filters: [\n        {\n            fieldname: \"company\",\n            label: __(\"Company\"),\n            fieldtype: \"Link\",\n            options: \"Company\",\n        },\n        {\n            fieldname: \"financial_year\",\n            label: __(\"Financial Year\"),\n            fieldtype: \"Link\",\n            options: \"Fiscal Year\",\n        },\n        {\n            fieldname: \"quarter\",\n            label: __(\"Quarter\"),\n            fieldtype: \"Select\",\n            options: [\n                \"Q1 (Apr-Jun)\",\n                \"Q2 (Jul-Sep)\",\n                \"Q3 (Oct-Dec)\",\n                \"Q4 (Jan-Mar)\"\n            ],\n        }\n    ]\n};\n",
  "letterhead": null,
- "modified": "2026-02-08 12:44:46.575108",
+ "modified": "2026-02-08 12:50:48.146892",
  "modified_by": "Administrator",
  "module": "TDS",
  "name": "Form16 Quater Wise",
@@ -36,6 +36,9 @@
   },
   {
    "role": "Residential Manager"
+  },
+  {
+   "role": "System Manager"
   }
  ],
  "timeout": 0

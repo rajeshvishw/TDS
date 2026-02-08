@@ -1,6 +1,6 @@
 {
  "charts": [],
- "content": "[{\"id\":\"-IS7B-o9ZC\",\"type\":\"card\",\"data\":{\"card_name\":\"Transaction\",\"col\":3}},{\"id\":\"mGwgE83vQ2\",\"type\":\"card\",\"data\":{\"card_name\":\"Master\",\"col\":3}}]",
+ "content": "[{\"id\":\"-IS7B-o9ZC\",\"type\":\"card\",\"data\":{\"card_name\":\"Transaction\",\"col\":3}},{\"id\":\"wnDmdmO8bb\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"mGwgE83vQ2\",\"type\":\"card\",\"data\":{\"card_name\":\"Master\",\"col\":3}},{\"id\":\"hA6iLfTfsQ\",\"type\":\"card\",\"data\":{\"card_name\":\"Report\",\"col\":4}}]",
  "creation": "2026-02-08 12:30:33.785741",
  "custom_blocks": [],
  "docstatus": 0,
@@ -69,9 +69,40 @@
    "link_type": "DocType",
    "onboard": 0,
    "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Report",
+   "link_count": 2,
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Form16 Monthly",
+   "link_count": 0,
+   "link_to": "Form16 Monthly",
+   "link_type": "Report",
+   "onboard": 0,
+   "report_ref_doctype": "Salary Slip",
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Form16 Quater Wise",
+   "link_count": 0,
+   "link_to": "Form16 Quater Wise",
+   "link_type": "Report",
+   "onboard": 0,
+   "report_ref_doctype": "Salary Slip",
+   "type": "Link"
   }
  ],
- "modified": "2026-02-08 12:38:09.205350",
+ "modified": "2026-02-08 12:51:49.964418",
  "modified_by": "Administrator",
  "module": "TDS",
  "name": "Taxes & Forms",

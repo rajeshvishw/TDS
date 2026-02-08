@@ -1,6 +1,7 @@
 {
  "actions": [],
  "allow_rename": 1,
+ "autoname": "format:TDS-{transaction_period}-{#####}",
  "creation": "2026-02-08 11:58:50.943603",
  "doctype": "DocType",
  "engine": "InnoDB",
@@ -16,6 +17,7 @@
   "section_break_hgwn",
   "date_of_amount_credited",
   "transaction_period",
+  "company",
   "column_break_nkcv",
   "date_of_tax_deducted",
   "total_amount",
@@ -74,6 +76,8 @@
    "fieldtype": "Column Break"
   },
   {
+   "fetch_from": "employee.pan_number",
+   "fetch_if_empty": 1,
    "fieldname": "pan_no",
    "fieldtype": "Data",
    "label": "Pan No"
@@ -109,7 +113,7 @@
   },
   {
    "fieldname": "date_of_tax_deducted",
-   "fieldtype": "Data",
+   "fieldtype": "Date",
    "label": "Date of Tax Deducted"
   },
   {
@@ -194,16 +198,23 @@
    "fieldname": "employee_details_section",
    "fieldtype": "Section Break",
    "label": "Employee Details"
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "label": "Organization",
+   "options": "Company"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2026-02-08 12:21:26.928738",
+ "modified": "2026-02-08 18:06:36.271593",
  "modified_by": "Administrator",
  "module": "TDS",
  "name": "TDS Liability",
+ "naming_rule": "Expression",
  "owner": "Administrator",
  "permissions": [
   {
@@ -221,7 +232,6 @@
   }
  ],
  "row_format": "Dynamic",
- "rows_threshold_for_grid_search": 20,
  "sort_field": "modified",
  "sort_order": "DESC",
  "states": []
