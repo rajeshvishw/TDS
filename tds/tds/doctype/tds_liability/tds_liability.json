@@ -1,0 +1,228 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2026-02-08 11:58:50.943603",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "employee_details_section",
+  "employee",
+  "column_break_mcsm",
+  "pan_no",
+  "column_break_xvkn",
+  "nature_of_transaction",
+  "column_break_rlnh",
+  "section",
+  "section_break_hgwn",
+  "date_of_amount_credited",
+  "transaction_period",
+  "column_break_nkcv",
+  "date_of_tax_deducted",
+  "total_amount",
+  "column_break_dcqo",
+  "amount_paid",
+  "int_amount",
+  "column_break_gkaw",
+  "tds_",
+  "tds_amount",
+  "section_break_tkaz",
+  "date_on_which_tax_paid_to_the_credit_of_central_govt",
+  "column_break_tvse",
+  "bank_branch_code",
+  "section_break_polv",
+  "challan_no_given_by_bank__tr_voucher_no",
+  "column_break_cdsu",
+  "challan_amount",
+  "section_break_cukd",
+  "reason_for_non_deduction__lower_deduction_if_any",
+  "section_break_7uec",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "section_break_7uec",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "TDS Liability",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "nature_of_transaction",
+   "fieldtype": "Link",
+   "label": "Nature Of Transaction",
+   "options": "Nature Of Transaction"
+  },
+  {
+   "fieldname": "column_break_mcsm",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "employee",
+   "fieldtype": "Link",
+   "label": "Employee",
+   "options": "Employee"
+  },
+  {
+   "fieldname": "column_break_xvkn",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "pan_no",
+   "fieldtype": "Data",
+   "label": "Pan No"
+  },
+  {
+   "fieldname": "column_break_rlnh",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section",
+   "fieldtype": "Link",
+   "label": "Section",
+   "options": "Section"
+  },
+  {
+   "fieldname": "section_break_hgwn",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "date_of_amount_credited",
+   "fieldtype": "Date",
+   "label": "Date of Amount Credited"
+  },
+  {
+   "fieldname": "transaction_period",
+   "fieldtype": "Link",
+   "label": "Transaction Period",
+   "options": "Transaction Period"
+  },
+  {
+   "fieldname": "column_break_nkcv",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "date_of_tax_deducted",
+   "fieldtype": "Data",
+   "label": "Date of Tax Deducted"
+  },
+  {
+   "fieldname": "total_amount",
+   "fieldtype": "Data",
+   "label": "Total Amount"
+  },
+  {
+   "fieldname": "column_break_dcqo",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "amount_paid",
+   "fieldtype": "Data",
+   "label": "Amount Paid"
+  },
+  {
+   "fieldname": "int_amount",
+   "fieldtype": "Data",
+   "label": "INT Amount"
+  },
+  {
+   "fieldname": "column_break_gkaw",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "tds_",
+   "fieldtype": "Percent",
+   "label": "TDS %"
+  },
+  {
+   "fieldname": "tds_amount",
+   "fieldtype": "Data",
+   "label": "TDS Amount"
+  },
+  {
+   "fieldname": "section_break_tkaz",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "date_on_which_tax_paid_to_the_credit_of_central_govt",
+   "fieldtype": "Date",
+   "label": "Date on which tax paid to the credit of Central Govt"
+  },
+  {
+   "fieldname": "column_break_tvse",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "bank_branch_code",
+   "fieldtype": "Data",
+   "label": "Bank Branch Code"
+  },
+  {
+   "fieldname": "section_break_polv",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "challan_no_given_by_bank__tr_voucher_no",
+   "fieldtype": "Data",
+   "label": "Challan No given by Bank / Tr. Voucher No."
+  },
+  {
+   "fieldname": "column_break_cdsu",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "challan_amount",
+   "fieldtype": "Data",
+   "label": "Challan Amount"
+  },
+  {
+   "fieldname": "section_break_cukd",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "reason_for_non_deduction__lower_deduction_if_any",
+   "fieldtype": "Small Text",
+   "label": "Reason for Non deduction / Lower Deduction, if Any"
+  },
+  {
+   "fieldname": "employee_details_section",
+   "fieldtype": "Section Break",
+   "label": "Employee Details"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2026-02-08 12:21:26.928738",
+ "modified_by": "Administrator",
+ "module": "TDS",
+ "name": "TDS Liability",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
