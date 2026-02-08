@@ -1,0 +1,42 @@
+{
+ "add_total_row": 0,
+ "add_translate_data": 0,
+ "columns": [],
+ "creation": "2026-02-08 09:17:41.593737",
+ "disabled": 0,
+ "docstatus": 0,
+ "doctype": "Report",
+ "filters": [],
+ "idx": 0,
+ "is_standard": "Yes",
+ "javascript": "frappe.query_reports[\"Form16 Monthly\"] = {\n    filters: [\n        {\n            fieldname: \"company\",\n            label: __(\"Company\"),\n            fieldtype: \"Link\",\n            options: \"Company\",\n        },\n        {\n            fieldname: \"year\",\n            label: __(\"Year\"),\n            fieldtype: \"Int\",\n            default: new Date().getFullYear()\n        },\n        {\n            fieldname: \"month\",\n            label: __(\"Month\"),\n            fieldtype: \"Select\",\n            options: [\n                \"January\",\n                \"February\",\n                \"March\",\n                \"April\",\n                \"May\",\n                \"June\",\n                \"July\",\n                \"August\",\n                \"September\",\n                \"October\",\n                \"November\",\n                \"December\"\n            ]\n        },\n        {\n            fieldname: \"employee\",\n            label: __(\"Employee\"),\n            fieldtype: \"Link\",\n            options: \"Employee\"\n        }\n    ]\n};",
+ "letterhead": null,
+ "modified": "2026-02-08 12:44:40.775771",
+ "modified_by": "Administrator",
+ "module": "TDS",
+ "name": "Form16 Monthly",
+ "owner": "Administrator",
+ "prepared_report": 0,
+ "ref_doctype": "Salary Slip",
+ "report_name": "Form16 Monthly",
+ "report_script": "def execute(filters=None):\n    columns = get_columns()\n    data = get_data(filters)\n    return columns, data\n\n\ndef get_columns():\n    return [\n        {\"label\": \"Employee\", \"fieldname\": \"employee\", \"fieldtype\": \"Link\", \"options\": \"Employee\", \"width\": 120},\n        {\"label\": \"Employee Name\", \"fieldname\": \"employee_name\", \"fieldtype\": \"Data\", \"width\": 160},\n        {\"label\": \"PAN\", \"fieldname\": \"pan\", \"fieldtype\": \"Data\", \"width\": 120},\n        {\"label\": \"Year\", \"fieldname\": \"year\", \"fieldtype\": \"Int\", \"width\": 80},\n        {\"label\": \"Month\", \"fieldname\": \"month\", \"fieldtype\": \"Data\", \"width\": 100},\n        {\"label\": \"Income Tax Deducted\", \"fieldname\": \"tds_amount\", \"fieldtype\": \"Currency\", \"width\": 150}\n    ]\n\n\ndef get_data(filters):\n    company = filters.get(\"company\")\n    year = int(filters.get(\"year\"))\n    month = filters.get(\"month\")\n    employee = filters.get(\"employee\")\n\n    from_date, to_date = get_month_dates(year, month)\n\n    conditions = \"\"\n    values = [company, from_date, to_date]\n\n    if employee:\n        conditions += \" AND ss.employee = %s\"\n        values.append(employee)\n\n    query = f\"\"\"\n        SELECT\n            ss.employee,\n            ss.employee_name,\n            emp.pan_number AS pan,\n            {year} AS year,\n            '{month}' AS month,\n            SUM(sd.amount) AS tds_amount\n        FROM `tabSalary Slip` ss\n        INNER JOIN `tabSalary Detail` sd ON sd.parent = ss.name\n        INNER JOIN `tabEmployee` emp ON emp.name = ss.employee\n        WHERE\n            ss.company = %s\n            AND ss.start_date >= %s\n            AND ss.end_date <= %s\n            AND ss.docstatus = 1\n            AND sd.salary_component = 'Income Tax'\n            {conditions}\n        GROUP BY ss.employee\n        ORDER BY ss.employee_name\n    \"\"\"\n\n    return frappe.db.sql(query, values, as_dict=True)\n\n\ndef get_month_dates(year, month):\n    month_map = {\n        \"January\": 1, \"February\": 2, \"March\": 3,\n        \"April\": 4, \"May\": 5, \"June\": 6,\n        \"July\": 7, \"August\": 8, \"September\": 9,\n        \"October\": 10, \"November\": 11, \"December\": 12\n    }\n\n    from_date = frappe.utils.getdate(f\"{year}-{month_map[month]}-01\")\n    to_date = frappe.utils.get_last_day(from_date)\n    return from_date, to_date",
+ "report_type": "Script Report",
+ "roles": [
+  {
+   "role": "HR Manager"
+  },
+  {
+   "role": "Employee"
+  },
+  {
+   "role": "Accountant/Finance Manager/HR"
+  },
+  {
+   "role": "Employee Self Service"
+  },
+  {
+   "role": "Residential Manager"
+  }
+ ],
+ "timeout": 0
+}
